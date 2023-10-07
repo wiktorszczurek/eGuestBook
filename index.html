@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&family=Josefin+Sans:wght@100;200;300&family=Parisienne&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&family=Josefin+Sans:wght@150;200;300&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Cyfrowa Księga Gości</title>
+    <style>
+      body {
+        font-family: "Josefin Sans", sans-serif;
+        background-color: #e0ebeb;
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+        font-weight: 600;
+        color: #000000;
+        text-align: center;
+      }
+      header {
+        background: #50b3a2;
+        color: #ffffff;
+        padding: 10px;
+        text-align: center;
+      }
+      nav {
+        text-align: center;
+        margin-top: 20px;
+      }
+      ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        display: inline-block; /* aby elementy menu były w jednej linii */
+      }
+      li {
+        display: inline;
+        margin-right: 20px; /* dodajemy odstęp między elementami menu */
+      }
+      a {
+        color: white;
+        text-decoration: none;
+        font-size: 1.2rem;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      h1 {
+        color: #ffffff;
+        font-family: "Cormorant Garamond", serif;
+        font-family: "Josefin Sans", sans-serif;
+        font-family: "Parisienne", cursive;
+        font-weight: 300; /* Dodaj cienką czcionkę */
+      }
+      h1,
+      h2 {
+        font-size: 2rem;
+        text-align: center;
+        margin-top: 1.5rem;
+      }
+      .section-heading {
+        background-color: transparent;
+        color: black;
+        padding: 10px;
+        border-radius: 5px;
+        margin-top: 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        font-size: 1.5rem;
+        border: 1px solid #50b3a2;
+      }
+      .container {
+        width: 70%;
+        margin: auto;
+        overflow: hidden;
+      }
+      strong {
+        color: #000000;
+      }
+      button {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        background: #333;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        font-size: 18px;
+      }
+      button:hover {
+        background: #17a589;
+      }
+
+      p,
+      li {
+        font-size: 18px;
+        color: #575757;
+        line-height: 1.6;
+      }
+      li a {
+        color: white;
+        text-decoration: none !important;
+        font-size: 1.2rem;
+        position: relative;
+        overflow: hidden;
+        padding-bottom: 5px;
+      }
+
+      li a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 1.6px;
+        bottom: 0;
+        left: 0;
+        background-color: white;
+        transition: width 0.3s ease-in-out;
+      }
+
+      li a:hover::after {
+        width: 100%;
+      }
+
+      ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
+      a.button {
+        display: inline-block;
+        color: #fff;
+        background: #333;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background 0.3s ease;
+      }
+      a.button:hover {
+        background: #17a589;
+      }
+      .description-image {
+        width: 100%;
+        max-width: 150px;
+        margin: 20px auto; /* zmienione z margin: 20px 0; na margin: 20px auto; aby wyśrodkować obrazek */
+        display: block; /* upewniamy się, że obrazek jest blokowy, co pozwoli na jego wyśrodkowanie */
+      }
+      #menu-button {
+        display: none;
+        cursor: pointer;
+        font-size: 2rem;
+        background: none;
+        border: none;
+        color: white;
+      }
+
+      #navbar {
+        transition: max-height 0.5s ease-in-out;
+        max-height: 200px; /* Dostosuj tę wartość zgodnie z rzeczywistą maksymalną wysokością menu */
+        overflow: hidden;
+      }
+
+      @media screen and (max-width: 762px) {
+        header {
+          padding: 5px;
+        }
+        header h1 {
+          font-size: 1.5rem;
+        }
+        #menu-button {
+          font-size: 1.5rem;
+        }
+        #menu-button {
+          display: block;
+        }
+        #navbar {
+          max-height: 0; /* Ukryj menu dla mobilnych */
+          padding-top: 0;
+        }
+        #navbar.active {
+          max-height: 200px; /* Pokaż menu (dostosuj wartość) */
+        }
+        #navbar ul li {
+          display: block; /* Elementy menu jeden pod drugim */
+          margin-right: 0;
+          padding: 8px;
+          text-align: center;
+        }
+        header {
+          padding: 5px;
+        }
+        header h1 {
+          font-size: 2rem;
+          margin-bottom: 0; /* Zmniejsz margines u dołu nagłówka */
+        }
+        #menu-button {
+          font-size: 1.5rem;
+          margin-top: 0; /* Zmniejsz margines u góry przycisku */
+          margin-bottom: 0;
+        }
+        nav {
+          margin-top: 0; /* Zmniejsz margines górny dla elementu nav */
+        }
+        .container {
+          width: 90%;
+        }
+      }
+      .footer {
+        margin-top: auto;
+        left: 0;
+        width: 100%;
+        background-color: #50b3a2;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+      }
+      .footer span {
+        font-weight: bold;
+      }
+      h3 {
+        text-align: center;
+        font-size: 1rem;
+      }
+      .button-link {
+        display: inline-block;
+        padding: 5px 5px;
+        background-color: #50b3a2;
+        color: #ffffff;
+        border-radius: 5px;
+        text-decoration: none;
+        margin: 10px 0;
+        transition: background-color 0.3s;
+        text-align: center;
+      }
+      a.button-link {
+        text-align: center;
+        text-decoration: none;
+      }
+      .button-link {
+        /* inne style */
+        display: block; /* zmienia wygląd na blokowy */
+        margin-left: auto; /* automatyczne marginesy */
+        margin-right: auto;
+        text-align: center; /* wyśrodkowanie tekstu wewnątrz */
+        max-width: 200px; /* maksymalna szerokość przycisku, dostosuj według potrzeb */
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>
+        <a
+          class="kupa"
+          href="index.html"
+          style="color: #ffffff; text-decoration: none; font-size: 2rem"
+          >e-Wishes</a
+        >
+      </h1>
+      <button id="menu-button"><i class="bi bi-list"></i></button>
+      <nav id="navbar">
+        <ul>
+          <li><a href="login.php">Zaloguj się</a></li>
+
+          <li><a href="dostep.php">Uzyskaj dostęp</a></li>
+          <li><a href="kontakt.php">Kontakt</a></li>
+        </ul>
+      </nav>
+    </header>
+    <h2>Cyfrowa Księga Gości</h2>
+
+    <div class="container">
+      <h2 class="section-heading">Na czym polega?</h2>
+      <p>
+        Cyfrowa Księga Gości to nowoczesne narzędzie, które umożliwia
+        gromadzenie i przechowywanie wspomnień i życzeń od gości podczas różnego
+        rodzaju uroczystości, takich jak wesela, jubileusze czy imprezy firmowe.
+      </p>
+      <br />
+      <p><strong>Oto kilka kluczowych aspektów tej usługi:</strong></p>
+      <p>
+        <strong>Cyfrowa forma:</strong> W przeciwieństwie do tradycyjnych ksiąg
+        gości, e-Księga Gości jest w pełni cyfrowa, co pozwala na łatwe i
+        wygodne przechowywanie oraz dzielenie się wspomnieniami z innymi.
+      </p>
+      <p>
+        <strong>Interaktywność:</strong> Goście mogą dodawać nie tylko tekstowe
+        życzenia, ale również zdjęcia co sprawia, że e-Księga Gości jest
+        bardziej interaktywna i osobista.
+      </p>
+
+      <p>
+        <strong>Łatwość korzystania:</strong> Prosty i intuicyjny interfejs
+        sprawia, że korzystanie z e-Księgi Gości jest łatwe nawet dla osób,
+        które nie są zaznajomione z nowymi technologiami.
+      </p>
+      <p>
+        <strong>Zachowanie wspomnień:</strong> Po zakończeniu uroczystości,
+        użytkownik ma możliwość pobrania wszystkich wpisów i multimediów w
+        formie cyfrowej, co pozwala na zachowanie cennych wspomnień na zawsze.
+      </p>
+      <br />
+      <h2 class="section-heading">Jak to wygląda?</h2>
+      <h3>Zeskanuj Kod QR, lub kliknij w przycisk, aby zobaczyć!</h3>
+      <a href="https://e-wishes.pl/test" target="_blank" class="button-link"
+        >Księga Gości</a
+      >
+      <img src="images/qr.png" alt="kod qr" class="description-image" />
+      <br />
+      <h2 class="section-heading">Jak to działa?</h2>
+      <p>
+        <strong>1. Dostęp do aplikacji:</strong> Po zakupie naszej e-Księgi
+        Gości, otrzymasz dostęp do aplikacji na swój adres e-mail. Tam
+        znajdziesz dane do logowania.
+      </p>
+      <p>
+        <strong>2. Włącz e-Księgę Gości:</strong> Po zalogowaniu się w
+        aplikacji, będziesz miał dostęp do różnych funkcji. Jedną z nich jest
+        "Włącz Księge Gości", ale nie spiesz się! Pamiętaj, że to warto kliknąć
+        dopiero przed samą uroczystością! Aplikacja jest aktywna przez 7 dni od
+        momentu włączenia.
+      </p>
+      <p>
+        <strong>3. Kod QR i link do aplikacji:</strong> Po aktywacji, otrzymasz
+        unikalny kod QR oraz link do e-Księgi. To właśnie tam możesz dodawać
+        zdjęcia z uroczystości oraz wpisywać życzenia.
+      </p>
+      <p>
+        <strong>4. Zapisane wspomnienia:</strong> Nasza E-Księga Gości pozwala
+        Ci zapisywać niezapomniane chwile i życzenia od gości. Możesz przeglądać
+        je w dowolnym momencie.
+      </p>
+      <p>
+        <strong>5. Pobierz wszystko:</strong> Po zakończeniu 7 dni, masz
+        możliwość pobrania wszystkich zdjęć i treści ze swojej e-Księgi Gości w
+        formie wygodnego pliku PDF.
+      </p>
+      <br />
+      <h2 class="section-heading">Dlaczego nasza e-Księga Gości?</h2>
+      <p>
+        <strong> Nowoczesność:</strong> Wykorzystujemy technologię, aby uczynić
+        Twoją księgę gości bardziej interaktywną i łatwiejszą w obsłudze.
+      </p>
+      <p>
+        <strong> Bezpieczeństwo danych:</strong> Dbamy o bezpieczeństwo Twoich
+        danych i zapewniamy prywatność Twoich gości.
+      </p>
+      <p>
+        <strong> Łatwość korzystania:</strong> Nawet osoby nieobeznane z
+        technologią będą w stanie obsłużyć naszą aplikację.
+      </p>
+      <p>
+        <strong> Zachowanie wspomnień:</strong> Dzięki e-Księdze Gości, Twoje
+        wspomnienia z dniu uroczystości pozostaną na zawsze.
+      </p>
+    </div>
+    <br />
+    <br />
+    <footer class="footer">
+      <p style="margin-bottom: 10px; font-size: 1rem; color: white">
+        &copy; 2023. Wszystkie prawa zastrzeżone.<br />
+        <a
+          href="https://itisws.pl"
+          style="
+            color: white;
+            font-weight: medium;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 1rem;
+          "
+          >Created by <span>ITisws.pl</span></a
+        >
+      </p>
+    </footer>
+  </body>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var menuButton = document.getElementById("menu-button");
+      var navbar = document.getElementById("navbar");
+
+      menuButton.addEventListener("click", function () {
+        navbar.classList.toggle("active");
+      });
+    });
+  </script>
+</html>
