@@ -9,3 +9,4 @@
 - Personalized Naming: There's a flexibility to rename the e-Guestbook as per personal preferences, making it uniquely representative of the event.
 - Customizable Appearance: Users can personalize the application's aesthetic by changing its background color, aligning it with their preferences and the theme of the occasion.
 - Written in PHP, JavaScript, HTML and CSS.
+![wishes](https://github.com/wiktorszczurek/eGuestBook/assets/124889327/1afe4cfc-3262-4a0f-baeb-791c529b3a09)
