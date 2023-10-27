@@ -1,8 +1,8 @@
 <?php
 $host = 'localhost';
-$db = 'srv56072_wish';
-$user = 'srv56072_wish';
-$pass = '1234';
+$db = '';
+$user = '';
+$pass = '';
 
 $connection = new mysqli($host, $user, $pass, $db);
 
